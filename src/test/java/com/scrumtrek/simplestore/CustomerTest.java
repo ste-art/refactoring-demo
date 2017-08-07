@@ -1,4 +1,4 @@
-package com.scrumtreak.simplestore;
+package com.scrumtrek.simplestore;
 
 import com.scrumtrek.simplestore.Customer;
 import com.scrumtrek.simplestore.Movie;
