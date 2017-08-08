@@ -71,6 +71,28 @@ public class UnitTest {
         assertEquals(1, sut.getDaysRented());
     }
 
+    @Test
+    public void shouldMovieReturnTitleWhenCreated()
+    {
+        Movie sut = new Movie("Title", PriceCodes.NewRelease);
+        assertEquals("Title", sut.getTitle());
+    }
+
+    @Test
+    public void shouldMovieReturnCodeWhenCreated()
+    {
+        Movie sut = new Movie("Title", PriceCodes.NewRelease);
+        assertEquals(PriceCodes.NewRelease, sut.getPriceCode());
+    }
+
+    @Test
+    public void shouldMovieReturnCodeWhenCodeSet()
+    {
+        Movie sut = new Movie("Title", PriceCodes.NewRelease);
+        sut.setPriceCode(PriceCodes.Regular);
+        assertEquals(PriceCodes.Regular, sut.getPriceCode());
+    }
+
     private void customerTestBase(PriceCodes code, int days, double expectedValue, int expectedPoints)
     {
         String customerName = "MyName";
