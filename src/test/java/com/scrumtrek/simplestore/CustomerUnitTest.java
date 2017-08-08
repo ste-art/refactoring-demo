@@ -1,5 +1,6 @@
 package com.scrumtrek.simplestore;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -7,7 +8,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class UnitTest {
+public class CustomerUnitTest {
 
     @Test
     public void shouldHaveNameWhenCreated()
@@ -44,6 +45,7 @@ public class UnitTest {
     {
         customerTestBase(PriceCodes.NewRelease, 1, 3.0, 1);
     }
+
     @Test
     public void shouldReturnCorrectStatementWhenChildrensLarge()
     {
@@ -103,7 +105,6 @@ public class UnitTest {
                 + "You earned " + expectedPoints + " frequent renter points.";
 
         Customer sut = new Customer(customerName);
-        //sut.addRental(new Rental(new Movie(MovieTitle, code), days));
 
         Movie movieStub = mock(Movie.class);
         when(movieStub.getPriceCode()).thenReturn(code);
