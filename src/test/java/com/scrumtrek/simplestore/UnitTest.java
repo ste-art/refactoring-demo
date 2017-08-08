@@ -55,7 +55,21 @@ public class UnitTest {
         customerTestBase(PriceCodes.Childrens, 1, 1.5, 1);
     }
 
+    @Test
+    public void shouldRentalReturnStubMovieWhenCreatedWithStubMovie()
+    {
+        Movie stub = mock(Movie.class);
+        Rental sut = new Rental(stub, 0);
+        assertEquals(stub, sut.getMovie());
+    }
 
+    @Test
+    public void shouldRentalReturnDaysWhenCreated()
+    {
+        Movie stub = mock(Movie.class);
+        Rental sut = new Rental(stub, 1);
+        assertEquals(1, sut.getDaysRented());
+    }
 
     private void customerTestBase(PriceCodes code, int days, double expectedValue, int expectedPoints)
     {
