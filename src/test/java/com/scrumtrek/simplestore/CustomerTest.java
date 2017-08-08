@@ -25,6 +25,12 @@ public class CustomerTest {
     }
 
     @Test
+    public void shouldReturnCorrectStatementWhenRegularClose()
+    {
+        customerTestBase(PriceCodes.Regular, 3, 3.5, 1);
+    }
+
+    @Test
     public void shouldReturnCorrectStatementWhenRegularSmall()
     {
         customerTestBase(PriceCodes.Regular, 1, 2.0, 1);
@@ -48,6 +54,15 @@ public class CustomerTest {
     public void shouldReturnCorrectStatementWhenChildrensSmall()
     {
         customerTestBase(PriceCodes.Childrens, 1, 1.5, 1);
+    }
+
+    @Test
+    public void shouldShangePriceCodeWhenPriceCodeSetted()
+    {
+        Movie sut = new Movie("Nothing", PriceCodes.NewRelease);
+        PriceCodes expectedCode = PriceCodes.Childrens;
+        sut.setPriceCode(expectedCode);
+        assertEquals(expectedCode, sut.getPriceCode());
     }
 
 
