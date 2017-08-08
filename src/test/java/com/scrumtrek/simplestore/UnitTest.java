@@ -3,10 +3,19 @@ package com.scrumtrek.simplestore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class UnitTest {
+
+    @Test
+    public void shouldHaveNameWhenCreated()
+    {
+        String name = "MyName";
+        Customer sut = new Customer(name);
+        assertEquals(name, sut.getName());
+    }
 
     @Test
     public void shouldReturnCorrectStatementWhenRegularLarge()
@@ -45,6 +54,7 @@ public class UnitTest {
     {
         customerTestBase(PriceCodes.Childrens, 1, 1.5, 1);
     }
+
 
 
     private void customerTestBase(PriceCodes code, int days, double expectedValue, int expectedPoints)
