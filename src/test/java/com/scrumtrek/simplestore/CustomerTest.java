@@ -5,10 +5,12 @@ import com.scrumtrek.simplestore.Movie;
 import com.scrumtrek.simplestore.PriceCodes;
 import com.scrumtrek.simplestore.Rental;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+@Ignore
 public class CustomerTest {
     @Test
     public void shouldHaveNameWhenCreated()
