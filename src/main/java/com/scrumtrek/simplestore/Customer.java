@@ -4,67 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-	private String m_Name;
-	private List<Rental> m_Rentals = new ArrayList<Rental>();
+	private String _name; // Naming?
+	private List<Movie> _movies = new ArrayList<Movie>();
 
 	public Customer(String name) {
-		m_Name = name;
+		_name = name;
 	}
 
 	public String getName() {
-		return m_Name;
+		return _name;
 	}
 
 
-	public void addRental(Rental arg){
-		m_Rentals.add(arg);
+	public void addMovie(Movie arg){
+		_movies.add(arg);
 	}
 
+	// 3. для тестопригодности разделить на разные методы получение отдельных значений и всей строки.
 	public String Statement()
 	{
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
-				
-		String result = "Rental record for " + m_Name + "\n";
-		
-		for(Rental each: m_Rentals) {
+
+		// 4. использовать платформонезависимый перевод строк
+		String result = "Rental record for " + _name + "\n";
+
+		// 2. вынести логику в Rental
+		for(Movie each: _movies) {
 			double thisAmount = 0;
-			
-			// Determine amounts for each line
-			switch(each.getMovie().getPriceCode()) {
-				case Regular:
-					thisAmount += 2;
-					if (each.getDaysRented() > 2)
-					{
-						thisAmount += (each.getDaysRented() - 2) * 1.5;
-					}
-					break;
-	
-				case NewRelease:
-					thisAmount += each.getDaysRented() * 3;
-					break;
-	
-				case Childrens:
-					thisAmount += 1.5;
-					if (each.getDaysRented() > 3)
-					{
-						thisAmount = (each.getDaysRented() - 3) * 1.5;
-					}
-					break;
-			}
-
-			// Add frequent renter points
-			frequentRenterPoints++;
-
-			// Add bonus for a two-day new-release rental
-			if ((each.getMovie().getPriceCode() == PriceCodes.NewRelease) && (each.getDaysRented() > 1))
-			{
-				frequentRenterPoints ++;
-			}
-
-			// Show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
+			thisAmount += each.getAmount();
+			result += "\t" + each.getTitle() + "\t" + thisAmount + "\n";
 			totalAmount += thisAmount;
+
+			frequentRenterPoints += each.getBonus();
 		}
 
 		// Add footer lines

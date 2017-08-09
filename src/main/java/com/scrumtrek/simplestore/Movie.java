@@ -1,24 +1,28 @@
 package com.scrumtrek.simplestore;
 
-public class Movie {
-	private String m_Title;
-	private PriceCodes m_PriceCode;
+// 3. Обединить Movie и Rental.
+public abstract class Movie {
+	private String _title;
+	protected int _days;
 
-	public Movie(String title, PriceCodes priceCode) {
-		m_Title = title;
-		m_PriceCode = priceCode;
-	}
-
-	public PriceCodes getPriceCode()	{
-		return m_PriceCode;
-	}
-	
-	public void setPriceCode(PriceCodes value) {
-		m_PriceCode = value;
+	public Movie(String title, int days) {
+		_title = title;
+		_days = days;
 	}
 
 	public String getTitle() {
-		return m_Title;
+		return _title;
+	}
+
+	public int getDays() {
+		return _days;
+	}
+
+	public abstract double getAmount();
+
+	public double getBonus()
+	{
+		return 1.0;
 	}
 }
 
